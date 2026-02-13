@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>使ってえいど？土佐弁メーカー</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>🗣️ 使ってえいど？</h1>
+<p>土佐弁ワンフレーズメーカー</p>
+
+<button onclick="generate()">押してみ？</button>
+
+<div id="output" style="margin-top:20px;">
+  <p>ここに土佐弁が表示されます。</p>
+</div>
+
+<script>
+const phrases = [
+  {
+    word: "まぁまぁ、えいがやき",
+    timing: "空気がピリついたとき",
+    effect: "その場が一旦ゆるむ",
+    power: 4
+  },
+  {
+    word: "それ、ほんまにやりゆうが？",
+    timing: "話が盛られすぎなとき",
+    effect: "全員が黙る",
+    power: 5
+  },
+  {
+    word: "調子のりすぎちゅうで",
+    timing: "テンション高すぎる人がいるとき",
+    effect: "笑いが起きる",
+    power: 4
+  },
+  {
+    word: "なんとかなるろう",
+    timing: "課題や将来の話をしてるとき",
+    effect: "全員現実逃避できる",
+    power: 3
+  },
+  {
+    word: "記憶は置いてきたき",
+    timing: "飲み会の翌日",
+    effect: "言い訳として使われる",
+    power: 4
+  }
+];
+
+function generate() {
+  const p = phrases[Math.floor(Math.random() * phrases.length)];
+  const meterWidth = p.power * 20;
+
+  document.getElementById("output").innerHTML = `
+    <p><strong>🗣️ フレーズ：</strong>${p.word}</p>
+    <p><strong>⏰ 使うタイミング：</strong>${p.timing}</p>
+    <p><strong>💥 空気への影響：</strong>${p.effect}</p>
+    <p><strong>⚠️ 使ってえいど度：</strong>${p.power}/5</p>
+    <div style="width:100%;height:12px;background:#ddd;border-radius:10px;overflow:hidden;">
+      <div style="width:${meterWidth}%;height:100%;background:#e74c3c;"></div>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
